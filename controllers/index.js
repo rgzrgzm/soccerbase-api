@@ -1,7 +1,7 @@
 const { getHTML, processHTML } = require("../helpers");
 
 async function getData() {
-  const url = "https://soccerlive.app/";
+  const url = process.env.MAIN_URL;
   const html = await getHTML(url);
   const data = processHTML(html);
 
