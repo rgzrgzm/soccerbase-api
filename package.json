@@ -1,0 +1,24 @@
+{
+  "name": "soccerbase-api",
+  "version": "1.0.0",
+  "description": "initializing soccerbase-api",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgzrgzm/soccerbase-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rgzrgzm/soccerbase-api/issues"
+  },
+  "homepage": "https://github.com/rgzrgzm/soccerbase-api#readme",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
