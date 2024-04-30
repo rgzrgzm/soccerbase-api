@@ -19,6 +19,12 @@ function processHTML(html) {
     const tournament = {};
     const leagueName = $(element).find(".league-name").text().trim();
     tournament["league_name"] = leagueName;
+    const leagueLogo = $(element)
+      .find(".league-name")
+      .prev()
+      .find("img")
+      .attr("src");
+    tournament["league_logo"] = leagueLogo;
 
     const matchesInTournament = [];
 
