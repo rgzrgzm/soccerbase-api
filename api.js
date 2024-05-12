@@ -5,7 +5,7 @@ exports.handler = async (event, context) => {
     const path = event.path;
     const origin_url = process.env.ORIGIN_URL;
     try {
-      if (path === `${origin_url}/leagues_list`) {
+      if (path === `${origin_url}/match/leagues_list`) {
         return {
           statusCode: 500,
           body: JSON.stringify({
