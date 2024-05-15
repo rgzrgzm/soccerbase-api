@@ -1,6 +1,29 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 
+const colorMap = {
+  blue: "#0D6EFD",
+  indigo: "#6610F2",
+  purple: "#6F42C1",
+  pink: "#D63384",
+  red: "#DC3545",
+  orange: "#FD7E14",
+  yellow: "#FFC107",
+  green: "#198754",
+  teal: "#20C997",
+  cyan: "#0DCAF0",
+  gray: "#6C757D",
+  "gray-dark": "#343A40",
+  primary: "#0D6EFD",
+  secondary: "#6C757D",
+  success: "#198754",
+  info: "#0DCAF0",
+  warning: "#FFC107",
+  danger: "#DC3545",
+  light: "#F8F9FA",
+  dark: "#212529",
+};
+
 async function getHTML(url) {
   const respuesta = await axios.get(url);
   return respuesta.data;
@@ -26,6 +49,28 @@ function processHTML(html) {
       .attr("src");
     tournament["league_logo"] = leagueLogo;
 
+    const selectedColors = new Set();
+
+    const getRandomColor = () => {
+      const colors = Object.keys(colorMap);
+
+      const availableColors = colors.filter(
+        (color) => !selectedColors.has(color)
+      );
+
+      if (availableColors.length === 0) {
+        selectedColors.clear();
+      }
+
+      const randomColorName =
+        availableColors[Math.floor(Math.random() * availableColors.length)];
+
+      selectedColors.add(randomColorName);
+
+      return colorMap[randomColorName];
+    };
+
+    tournament["color"] = getRandomColor();
     const matchesInTournament = [];
 
     $(element)
